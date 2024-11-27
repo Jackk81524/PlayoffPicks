@@ -5,8 +5,8 @@ const app = express()
 
 const allowedOrigins = [
     'http://localhost:3000', 
-    'https://playoff-picks-client.vercel.app/' 
-  ];
+    'https://playoff-picks-client.vercel.app' 
+];
 
 const corsOptions = {
     origin: (origin, callback) => {
@@ -17,7 +17,7 @@ const corsOptions = {
         }
     }, 
     methods: ['GET', 'POST'], 
-    allowedHeaders: ['Content-Type', 'Authorization'], 
+    allowedHeaders: ['Content-Type', 'Authorization', 'Access-Control-Allow-Origin'], 
 };
   
 app.use(cors(corsOptions));
