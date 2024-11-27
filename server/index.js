@@ -1,9 +1,26 @@
 const express = require('express')
+const cors = require('cors');
+
 const app = express()
 
-// app.use("/", (req, res) => {
-//     res.send("Server is running...")
-// })
+const allowedOrigins = [
+    'http://localhost:3000', 
+    'https://playoff-picks-client.vercel.app/' 
+  ];
+
+const corsOptions = {
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+    }, 
+    methods: ['GET', 'POST'], 
+    allowedHeaders: ['Content-Type', 'Authorization'], 
+};
+  
+app.use(cors(corsOptions));
 
 app.get("/api/data", (req, res) => {
     res.json({
