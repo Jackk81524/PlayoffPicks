@@ -7,10 +7,13 @@ function App() {
   const [loading, setLoading] = useState(true); // State to manage loading
   const [error, setError] = useState(null); // State to manage errors
 
+  // const api_link = 'https://playoff-picks-server.vercel.app/api/data'
+  const api_link = 'http://localhost:5000/api/data'
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://playoff-picks-server.vercel.app/api/data'); // Replace with your API URL
+        const response = await fetch(api_link); // Replace with your API URL
         if (!response.ok) {
           throw new Error(`Error: ${response.statusText}`);
         }
