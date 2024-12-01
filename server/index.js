@@ -3,7 +3,7 @@ const express = require('express')
 const cors = require('cors');
 
 const app = express()
-initializeFirebaseApp();
+// initializeFirebaseApp();
 
 const allowedOrigins = [
     'http://localhost:3000', 
