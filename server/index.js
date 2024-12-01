@@ -1,8 +1,9 @@
+const { uploadProcessData, initializeFirebaseApp } = require('./firebase');
 const express = require('express')
 const cors = require('cors');
 
-
 const app = express()
+initializeFirebaseApp();
 
 const allowedOrigins = [
     'http://localhost:3000', 
@@ -23,12 +24,16 @@ const corsOptions = {
   
 app.use(cors(corsOptions));
 
-app.get("/api/data", (req, res) => {
-    res.json({
-        message: "Hello from the API!",
-        success: true,
-        data: [1, 2, 3, 4, 5]
-    });
+app.get("/api/data", async (req, res) => {
+    try {
+        const out = await uploadProcessData();
+        res.json({
+            out: out
+        });
+    } catch (error) {
+        console.log("testing");
+        return error.Error;
+    }
 });
 
 app.listen(5000, console.log("Server started..."))
