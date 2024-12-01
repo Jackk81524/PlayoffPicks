@@ -30,11 +30,6 @@ app.get("/api/data", async (req, res) => {
         res.json({
             out: out
         });
-        // res.json({
-        //     message: "Hello from the API!",
-        //     success: true,
-        //     data: [1, 2, 3, 4, 5]
-        // });
     } catch (error) {
         console.log("testing");
         return error.Error;
