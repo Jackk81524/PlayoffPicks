@@ -7,8 +7,8 @@ function App() {
   const [loading, setLoading] = useState(true); // State to manage loading
   const [error, setError] = useState(null); // State to manage errors
 
-  // const api_link = 'https://playoff-picks-server.vercel.app/api/data'
-  const api_link = 'http://localhost:5000/api/data'
+  const api_link = 'https://playoff-picks-server.vercel.app/api/data'
+  // const api_link = 'http://localhost:5000/api/data'
 
   useEffect(() => {
     const fetchData = async () => {
