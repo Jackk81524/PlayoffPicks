@@ -26,9 +26,14 @@ app.use(cors(corsOptions));
 
 app.get("/api/data", async (req, res) => {
     try {
-        const out = await uploadProcessData();
+        // const out = await uploadProcessData();
+        // res.json({
+        //     out: out
+        // });
         res.json({
-            out: out
+            message: "Hello from the API!",
+            success: true,
+            data: [1, 2, 3, 4, 5]
         });
     } catch (error) {
         console.log("testing");
