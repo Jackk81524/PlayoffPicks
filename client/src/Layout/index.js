@@ -1,12 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import './index.css'
+import './index.scss'
+import Navbar from '../Navbar';
 
 const Layout = () => {
   return (
     <div className="App">
+        <Navbar />
         <div className='page'>
-            <h1>Testing</h1>
             <Outlet />
         </div>
     </div>

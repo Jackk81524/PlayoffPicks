@@ -1,11 +1,10 @@
-import './index.css'
+import './index.scss'
 
 const Home = () => {
     return (
         <>
-            <div>
-                <p>Testing</p>
-                <h1>HomePage</h1>
+            <div className='Home'>
+                Home
             </div>
         </>
     )
