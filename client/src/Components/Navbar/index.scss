@@ -22,18 +22,17 @@
         font-style: normal;
     }
 
-    .side-text {
+    nav {
         color: white;
         font-size: 3vh;;
         font-family: "Nunito", sans-serif;
         text-decoration: none;
 
-        &:hover {
-            color: rgb(255, 187, 0);;
-          }
-        
-        &.active {
-            text-decoration: underline;
+        a.active {
+            svg{
+                color: rgb(255, 187, 0);
+            }
         }
+        
     }
 }

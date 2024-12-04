@@ -1,19 +1,33 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.scss';
-import Home from './Home';
-import Layout from './Layout';
-import Standings from './Standings';
+import Home from './Components/Home';
+import Layout from './Components/Layout';
+import Standings from './Components/Standings';
+import { UserContext, UserProvider } from './Context/UserContext';
+import { useContext } from 'react';
+import SelectUser from './Components/SelectUser';
 
-function App() {
+function AppContent() {
+  const { user } = useContext(UserContext);
+  
   return (
     <>
       <Routes>
         <Route path="/" element={<Layout />} >
-          <Route index element={<Home />} />
-          <Route path="/standings" element={<Standings />} />
+              <Route index element={user ? <Home /> : <Navigate to="/login" replace />} />
+              <Route path="/standings" element={user ? <Standings /> : <Navigate to="/login" replace />} />
+              <Route path="/login" element={<SelectUser />} />
         </Route>
       </Routes>
     </>
+  );
+}
+
+function App () {
+  return (
+    <UserProvider>
+      <AppContent />
+    </UserProvider>
   );
 }
 
