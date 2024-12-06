@@ -2,43 +2,45 @@
     "Weeks" :
         {
             "Wild Card": {
-                "0" : {
-                    "team1" : "Jets",
-                    "team2" : "Giants",
-                    "lockTime" : "2024-12-03T14:30:00Z",
-                    "result": null,
-                    "picks" : {
-                        "Jack" : "Jets",
-                        "Matt" : "Jets",
-                        "Logan": "Giants",
-                        "Rich" : "Jets",
-                        "Nick" : null,
-                        "Kyle": null,
-                        "Mogo": "Giants"
-                    }
-                }, 
-                "1" : {
-                    "team1" : "Cowboys",
-                    "team2" : "Bears",
-                    "lockTime" : "2024-12-03T14:30:00Z",
-                    "result": null,
-                    "picks" : {
-                        "Jack" : "Bears",
-                        "Matt" : "Cowboys",
-                        "Logan": "Cowboys",
-                        "Rich" : "Bears",
-                        "Nick" : null,
-                        "Kyle": "Bears",
-                        "Mogo": null
+                "Games": {
+                    "0" : {
+                        "team1" : "Jets",
+                        "team2" : "Giants",
+                        "lockTime" : "2025-12-03T14:30:00Z",
+                        "result": null,
+                        "picks" : {
+                            "Jack" : "Jets",
+                            "Matt" : "Jets",
+                            "Logan": "Giants",
+                            "Rich" : "Jets",
+                            "Nick" : null,
+                            "Kyle": null,
+                            "Mogo": "Giants"
+                        }
+                    }, 
+                    "1" : {
+                        "team1" : "Cowboys",
+                        "team2" : "Bears",
+                        "lockTime" : "2026-12-03T14:30:00Z",
+                        "result": null,
+                        "picks" : {
+                            "Jack" : "Bears",
+                            "Matt" : "Cowboys",
+                            "Logan": "Cowboys",
+                            "Rich" : "Bears",
+                            "Nick" : null,
+                            "Kyle": "Bears",
+                            "Mogo": null
+                        }
                     }
                 },
-                "startTime": "2024-12-03T14:30:00Z"
+                "startTime": "2024-12-06T14:30:00Z"
             },
             "Divisional": {
                 "startTime": "2024-12-04T14:30:00Z"
             },
             "CFP R1": {
-                "startTime": "2025-11-01T14:30:00Z"
+                "startTime": "2024-11-01T14:30:00Z"
             },
             "CFP R2": {
                 "startTime": "2024-12-02T14:30:00Z"

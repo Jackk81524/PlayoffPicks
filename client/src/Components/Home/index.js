@@ -25,8 +25,19 @@ const Home = () => {
                     </option>
                 ))}
             </select>
-            <div className='pick'> 
-                <Picker team1="Jets" team2="Giants"/>
+            <div className='pick'>
+            {weeksData[selectedWeek].Games && 
+                Object.values(weeksData[selectedWeek].Games).map((game, index) => {
+                    console.log('Game:', game); // Log the current game object
+                    return (
+                    <Picker 
+                        key={index} 
+                        team1={game["team1"]} 
+                        team2={game["team2"]} 
+                    />
+                    );
+                })
+                }
             </div>
         </div>
     )
