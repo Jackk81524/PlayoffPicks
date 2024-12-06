@@ -4,20 +4,17 @@
     align-items: center;
 
     .dropdown {
+        appearance: none;
         width: 40vh;
         height: 7vh;
         border: 2px solid var(--highlight);
         border-radius: 20px;
-        // text-align: center !important;
+        text-align-last: center;
         background-color: white;
         color: var(--main-dark);
         font-family: "Nunito", sans-serif;
         font-size: 2vh;
         margin-bottom: 20px;
-    }
-
-    select {
-        text-align: center;
     }
 
     .pick {
