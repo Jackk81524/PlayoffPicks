@@ -1,0 +1,26 @@
+button {
+    width: 17vh;
+    height: 9vh;
+    border: 2px solid var(--highlight);
+    // border-radius: 20px;
+    text-align: center;
+    background-color: var(--main-medium);
+    color: white;
+    font-family: "Nunito", sans-serif;
+    font-size: 2vh;
+
+}
+
+.left {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.right {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+button.selected {
+    background-color: var(--highlight);
+}

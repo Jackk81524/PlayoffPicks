@@ -6,6 +6,7 @@ import Standings from './Components/Standings';
 import { UserContext, UserProvider } from './Context/UserContext';
 import { useContext } from 'react';
 import SelectUser from './Components/SelectUser';
+import { PicksProvider } from './Context/PicksContext';
 
 function AppContent() {
   const { user } = useContext(UserContext);
@@ -26,7 +27,9 @@ function AppContent() {
 function App () {
   return (
     <UserProvider>
-      <AppContent />
+      <PicksProvider>
+        <AppContent />
+      </PicksProvider>
     </UserProvider>
   );
 }

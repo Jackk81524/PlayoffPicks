@@ -1,0 +1,18 @@
+.selectUser {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3vh;
+
+    button {
+        width: 15vh;
+        height: 15vh;
+        border: 2px solid;
+        border-radius: 50%;
+        background-color: var(--main-medium);
+        border-color: var(--highlight);
+        font-size: 2.5vh;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: white;
+        cursor: pointer;
+    }
+}

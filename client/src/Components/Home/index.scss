@@ -1,0 +1,27 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .dropdown {
+        width: 40vh;
+        height: 7vh;
+        border: 2px solid var(--highlight);
+        border-radius: 20px;
+        text-align: center;
+        background-color: white;
+        color: var(--main-dark);
+        font-family: "Nunito", sans-serif;
+        font-size: 2vh;
+        margin-bottom: 20px;
+    }
+
+    .pick {
+        margin: 15px;
+    }
+
+    .dropdown:focus {
+        outline: none;
+        background-color: va(--main-medium);
+    }
+}

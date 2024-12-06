@@ -2,12 +2,14 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
+    background-color: var(--main-light);
 
     .page {
         margin-top: 90px; 
+        padding-top: 30px;
         overflow-y: auto; 
         display: flex;
-        align-items: center;
+        align-items: start;
         justify-content: center;
         flex-grow: 1;
     }

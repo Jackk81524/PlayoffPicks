@@ -1,0 +1,50 @@
+import { useState, useEffect } from 'react';
+
+export const useFetchWeeks = (url) => {
+    const [weeksList, setWeeksList] = useState(null);
+    const [weeksData, setWeeksData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        let isMounted = true; 
+
+        const fetchWeeks = async () => {
+            try {
+                setLoading(true);
+
+                await new Promise((resolve) => setTimeout(resolve, 2000));
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch data');
+                }
+
+                const result = await response.json();
+
+                if (isMounted) {
+                    const sortedWeeks = Object.entries(result.Weeks)
+                        .sort((a, b) => new Date(b[1].startTime) - new Date(a[1].startTime))
+                        .map(week => week[0]);
+                    
+                    setWeeksList(sortedWeeks);
+                    setWeeksData(result.Weeks);
+                    setLoading(false);
+                }
+            } catch (err) {
+                if (isMounted) {
+                    setError(err.message);
+                    setLoading(false);
+                }
+            }
+        };
+
+        fetchWeeks();
+
+        return () => {
+            isMounted = false; 
+        };
+    }, [url]);
+
+    return { weeksList, weeksData, loading, error };
+};
