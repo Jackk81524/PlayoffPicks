@@ -9,6 +9,9 @@
         border: 2px solid var(--highlight);
         border-radius: 20px;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: white;
         color: var(--main-dark);
         font-family: "Nunito", sans-serif;
