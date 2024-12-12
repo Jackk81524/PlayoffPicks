@@ -1,4 +1,4 @@
-const { uploadProcessData, initializeFirebaseApp } = require('./firebase');
+const { uploadProcessData, fetchPicksData, initializeFirebaseApp } = require('./firebase');
 const express = require('express')
 const cors = require('cors');
 
@@ -24,14 +24,14 @@ const corsOptions = {
   
 app.use(cors(corsOptions));
 
-app.get("/api/data", async (req, res) => {
+app.get("/api/allData", async (req, res) => {
     try {
-        const out = await uploadProcessData();
+        const out = await fetchPicksData();
         res.json({
-            out: out
+            Weeks : out
         });
     } catch (error) {
-        console.log("testing");
+        console.log(error);
         return error.Error;
     }
 });

@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, setDoc } = require("firebase/firestore")
+const { getFirestore, doc, setDoc, getDocs, collection } = require("firebase/firestore")
 require('dotenv').config();
 
 const {
@@ -35,6 +35,43 @@ const initializeFirebaseApp = () => {
     }
 };
 
+const fetchPicksData = async () => {
+    const data = { };
+
+    try {
+        const collectionRef = collection(firestoreDb, "Picks");
+        const weekSnapshot = await getDocs(collectionRef);
+
+        for(const week of weekSnapshot.docs) {
+            const gamesCollection = collection(week.ref, "Games");
+            const gameSnapshot = await getDocs(gamesCollection);
+            
+            const gamesData = { "Games" : { } };
+
+            for(const game of gameSnapshot.docs) {
+                const picksCollection = collection(game.ref, "picks");
+                const picksSnapshot = await getDocs(picksCollection);
+
+                const picks = { };
+
+                for(const pick of picksSnapshot.docs) {
+                    picks[pick.id] = pick.data().Pick;
+                }
+
+                gamesData.Games[game.id] = { ...game.data(), picks };
+                gamesData["startTime"] = week.data().startTime;
+
+            }
+            
+            data[week.id] = gamesData;
+        }
+        return data;
+    } catch (error) {
+        console.log("Error: ", error);
+        throw error;
+    }
+};
+
 const uploadProcessData = async () => {
     const dataToUpload = {
         key1: "test",
@@ -56,5 +93,6 @@ const getFirebaseApp = () => app;
 module.exports = {
     initializeFirebaseApp,
     getFirebaseApp,
-    uploadProcessData
+    uploadProcessData, 
+    fetchPicksData
 }

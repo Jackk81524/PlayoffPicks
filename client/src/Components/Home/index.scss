@@ -17,8 +17,24 @@
         margin-bottom: 20px;
     }
 
+    option {
+        background-color: white;
+        color: black;
+    }
+
     .dropdown:focus {
         outline: none;
-        background-color: va(--main-medium);
+        background-color: white;
+    }
+
+    .submission {
+        width: 24vh;
+        height: 4vh;
+        margin: 15px;
+        border-radius: 20px;
+        border: 2px solid var(--highlight);
+        font-family: "Nunito", sans-serif;
+        background-color: var(--main-dark);
+        color: white;
     }
 }

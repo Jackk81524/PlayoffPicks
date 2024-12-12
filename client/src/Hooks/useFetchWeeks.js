@@ -19,9 +19,9 @@ export const useFetchWeeks = (url) => {
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
-
+        
                 const result = await response.json();
-
+                console.log(result);
                 if (isMounted) {
                     const sortedWeeks = Object.entries(result.Weeks)
                         .sort((a, b) => new Date(b[1].startTime) - new Date(a[1].startTime))

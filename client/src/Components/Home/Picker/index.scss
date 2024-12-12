@@ -1,27 +1,44 @@
-button {
-    width: 17vh;
-    height: 9vh;
-    border: 2px solid var(--highlight);
-    // border-radius: 20px;
-    text-align: center;
-    background-color: var(--main-medium);
-    color: white;
-    font-family: "Nunito", sans-serif;
-    font-size: 2vh;
-    margin: 15px 0px;
+.picker{
+    button {
+        width: 17vh;
+        height: 9vh;
+        border: 2px solid var(--highlight);
+        text-align: center;
+        background-color: var(--main-medium);
+        color: white;
+        font-family: "Nunito", sans-serif;
+        font-size: 2vh;
+        margin: 15px 0px;
 
+        &:disabled{
+            border: none;
+        }
+    }
+
+    .left {
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    .right {
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    button.pending {
+        background-color: var(--highlight);
+
+        &:disabled {
+            background-color: var(--main-dark);
+        }
+    }
+
+    button.correct {
+        background-color: green;
+    }
+
+    button.incorrect {
+        background-color: red;
+    }
 }
 
-.left {
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.right {
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-}
-
-button.selected {
-    background-color: var(--highlight);
-}

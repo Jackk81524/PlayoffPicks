@@ -5,13 +5,17 @@ import Picker from './Picker';
 
 const Home = () => {
     const { weeksList, weeksData, loading, error } = useContext(PicksContext);
-    const [ selectedWeek, setSelectedWeek ] = useState('')
+    const [ selectedWeek, setSelectedWeek ] = useState('');
 
     useEffect(() => {
         if (!loading) {
             setSelectedWeek(weeksList[0]);
         }
     }, [weeksList]);
+
+    const handleSubmission = () => {
+        console.log(weeksData);
+    }
 
     if(loading) return <p>Loading...</p>
     if(error) return <p>Error: {error}</p>
@@ -20,24 +24,25 @@ const Home = () => {
         <div className='home'>
             <select className="dropdown" value={selectedWeek} onChange={(e) => setSelectedWeek(e.target.value)}>
                 {weeksList && weeksList.map((week, index) => (
-                    <option key={index} value={week}>
+                    <option className='option' key={index} value={week}>
                         {week}
                     </option>
                 ))}
             </select>
             <div className='pick'>
-            {weeksData[selectedWeek].Games && 
-                Object.values(weeksData[selectedWeek].Games).map((game, index) => {
-                    console.log('Game:', game); // Log the current game object
-                    return (
-                    <Picker 
-                        key={index} 
-                        team1={game["team1"]} 
-                        team2={game["team2"]} 
-                    />
-                    );
-                })
+                {selectedWeek && weeksData[selectedWeek].Games &&
+                    Object.values(weeksData[selectedWeek].Games).map((game, index) => {
+                        return (
+                        <Picker 
+                            key={index} 
+                            game={game}
+                        />
+                        );
+                    })
                 }
+            </div>
+            <div>
+                <button className='submission' onClick={handleSubmission}>Submit</button>
             </div>
         </div>
     )
