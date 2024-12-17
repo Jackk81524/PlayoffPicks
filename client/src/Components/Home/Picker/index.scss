@@ -28,9 +28,9 @@
     button.pending {
         background-color: var(--highlight);
 
-        &:disabled {
-            background-color: var(--main-dark);
-        }
+        // &:disabled {
+        //     background-color: var(--main-highligh);
+        // }
     }
 
     button.correct {

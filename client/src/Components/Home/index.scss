@@ -30,11 +30,20 @@
     .submission {
         width: 24vh;
         height: 4vh;
-        margin: 15px;
+        margin-top: 15px;
         border-radius: 20px;
         border: 2px solid var(--highlight);
         font-family: "Nunito", sans-serif;
         background-color: var(--main-dark);
+        color: white;
+    }
+
+    .submission:active {
+        background-color: var(--highlight);
+    }
+
+    .result-message {
+        text-align: center;
         color: white;
     }
 }

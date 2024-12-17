@@ -13,7 +13,7 @@ export const useFetchWeeks = (url) => {
             try {
                 setLoading(true);
 
-                await new Promise((resolve) => setTimeout(resolve, 2000));
+                // await new Promise((resolve) => setTimeout(resolve, 2000));
 
                 const response = await fetch(url);
                 if (!response.ok) {
@@ -21,7 +21,7 @@ export const useFetchWeeks = (url) => {
                 }
         
                 const result = await response.json();
-                console.log(result);
+
                 if (isMounted) {
                     const sortedWeeks = Object.entries(result.Weeks)
                         .sort((a, b) => new Date(b[1].startTime) - new Date(a[1].startTime))

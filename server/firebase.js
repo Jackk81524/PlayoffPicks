@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, setDoc, getDocs, collection } = require("firebase/firestore")
+const { getFirestore, doc, setDoc, getDocs, collection, updateDoc } = require("firebase/firestore")
 require('dotenv').config();
 
 const {
@@ -88,11 +88,29 @@ const uploadProcessData = async () => {
     }
 };
 
+const uploadPicksData = async (data) => {
+    try {
+        const weekDoc = doc(firestoreDb, "Picks", data.Week);
+        const gameDoc = doc(weekDoc, "Games", data.GameId);
+        const pickDoc = doc(gameDoc, "picks", data.User);
+
+        await updateDoc(pickDoc, {
+            "Pick": data.Pick
+        });
+
+        return "Success";
+    } catch(error) {
+        console.log("Error updating", error);
+        throw error;
+    }
+}
+
 const getFirebaseApp = () => app;
 
 module.exports = {
     initializeFirebaseApp,
     getFirebaseApp,
     uploadProcessData, 
-    fetchPicksData
+    fetchPicksData,
+    uploadPicksData
 }

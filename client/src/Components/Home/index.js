@@ -2,10 +2,17 @@ import { useContext, useEffect, useState } from 'react'
 import './index.scss'
 import { PicksContext } from '../../Context/PicksContext';
 import Picker from './Picker';
+import { useUpdatePicks } from '../../Hooks/useUpdatePicks';
+import { UserContext } from '../../Context/UserContext';
+import LoadingSpinner from '../Spinner';
+// import 
 
 const Home = () => {
-    const { weeksList, weeksData, loading, error } = useContext(PicksContext);
+    const { user } = useContext(UserContext);
+    const { weeksList, weeksData, loading, error, url } = useContext(PicksContext);
     const [ selectedWeek, setSelectedWeek ] = useState('');
+
+    const { setPicks, loading: submitLoading, error: submitError } = useUpdatePicks();
 
     useEffect(() => {
         if (!loading) {
@@ -13,8 +20,12 @@ const Home = () => {
         }
     }, [weeksList]);
 
-    const handleSubmission = () => {
-        console.log(weeksData);
+    
+    const handleSubmission = async () => {
+        for(let game in weeksData[selectedWeek].Games){
+            const pick = weeksData[selectedWeek].Games[game].picks[user];
+            await setPicks(url + 'updatePick', selectedWeek, game, user, pick)
+        }
     }
 
     if(loading) return <p>Loading...</p>
@@ -42,7 +53,18 @@ const Home = () => {
                 }
             </div>
             <div>
-                <button className='submission' onClick={handleSubmission}>Submit</button>
+                
+                <button className='submission' onClick={handleSubmission} disabled={submitLoading}>
+                    {submitLoading ? (
+                        <LoadingSpinner /> 
+                    ) : (
+                        'Submit'
+                    )}
+                </button>
+                <div className='result-message'>
+                    {submitError && <p className="error">{submitError.message}</p>}
+                </div>
+
             </div>
         </div>
     )
