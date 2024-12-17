@@ -18,6 +18,7 @@ function AppContent() {
               <Route index element={user ? <Home /> : <Navigate to="/login" replace />} />
               <Route path="/standings" element={user ? <Standings /> : <Navigate to="/login" replace />} />
               <Route path="/login" element={<SelectUser />} />
+              <Route path="/addGame" element={<Standings />} />
         </Route>
       </Routes>
     </>

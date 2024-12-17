@@ -35,4 +35,15 @@
         }
         
     }
+
+    .left-nav {
+        display: flex;
+        position: relative; /* Make sure the icon is absolutely positioned inside */
+        gap: 0px;
+
+        .add {
+            position: absolute;
+            left: 55px;  /* Adjust the position to your desired spot */
+        }
+    }
 }
