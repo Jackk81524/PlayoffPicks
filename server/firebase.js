@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, setDoc, getDocs, collection, updateDoc } = require("firebase/firestore")
+const { getFirestore, doc, setDoc, getDocs, collection, updateDoc, getDoc } = require("firebase/firestore")
 require('dotenv').config();
 
 const {
@@ -88,6 +88,44 @@ const uploadProcessData = async () => {
     }
 };
 
+const addGame = async (data) => {
+    try {
+        const weekRef = doc(firestoreDb, "Picks", data.Week);
+        const weekSnap = await getDoc(weekRef);
+
+        const nextId = weekSnap.get("nextId");
+        
+        dataToUpload = {
+            gameTime : data.gameTime,
+            team1: data.team1,
+            team2: data.team2,
+            result: null,
+        }
+
+        const gamesCollection = collection(weekRef, "Games");
+        const newGameDoc = doc(gamesCollection, nextId.toString());
+
+        await setDoc(newGameDoc, dataToUpload);
+
+        await updateDoc(weekRef, {
+            "nextId": nextId + 1
+        })
+
+        const users = ["Jack", "Kyle", "Matt", "Logan", "Nick", "Mogo", "Rich"]; // Fix later to not be hardcoded
+        const picksCollection = collection(newGameDoc, "picks"); 
+
+        const pickPromises = users.map(async (user) => {
+            const userPickDoc = doc(picksCollection, user);
+            return setDoc(userPickDoc, { Pick: null });
+        });
+
+        await Promise.all(pickPromises); 
+        
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 const uploadPicksData = async (data) => {
     try {
         const weekDoc = doc(firestoreDb, "Picks", data.Week);
@@ -105,6 +143,7 @@ const uploadPicksData = async (data) => {
     }
 }
 
+
 const getFirebaseApp = () => app;
 
 module.exports = {
@@ -112,5 +151,6 @@ module.exports = {
     getFirebaseApp,
     uploadProcessData, 
     fetchPicksData,
-    uploadPicksData
+    uploadPicksData,
+    addGame
 }
