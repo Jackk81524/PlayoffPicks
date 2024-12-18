@@ -1,5 +1,9 @@
 .settings-page {
     .settings-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
         button {
             margin: 1vh;
             width: 12vh;

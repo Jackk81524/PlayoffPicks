@@ -34,7 +34,10 @@ const AddGame = () => {
     const handleSubmission = async () => {
         const newDate = new Date(gameTime);
         const gameTimeUtc = newDate.toISOString();
-        await addGame(url + 'addGame', selectedWeek, gameTimeUtc, team1, team2)
+        await addGame(url + 'addGame', selectedWeek, gameTimeUtc, team1, team2);
+        setTeam1('');
+        setTeam2('');
+        setGameTime('');
     }
 
     return (
