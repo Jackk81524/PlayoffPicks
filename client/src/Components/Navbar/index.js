@@ -18,7 +18,7 @@ const Navbar = () => {
                     </NavLink>
                 </nav>
                 {user == "Jack" && <nav>
-                    <NavLink exact="true" activeClassName="active" to="/addGame" className="side-text add">
+                    <NavLink exact="true" activeClassName="active" to="/settings" className="side-text add">
                         <FontAwesomeIcon icon = {faAdd} color='white' />
                     </NavLink>
                 </nav>}

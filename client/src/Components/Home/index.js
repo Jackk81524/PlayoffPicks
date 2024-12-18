@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react'
 import './index.scss'
 import { PicksContext } from '../../Context/PicksContext';
 import Picker from './Picker';
-import { useUpdatePicks } from '../../Hooks/useUpdatePicks';
+import { useSetPicks } from '../../Hooks/useUpdatePicks';
 import { UserContext } from '../../Context/UserContext';
 import LoadingSpinner from '../Spinner';
 // import 
@@ -12,7 +12,7 @@ const Home = () => {
     const { weeksList, weeksData, loading, error, url } = useContext(PicksContext);
     const [ selectedWeek, setSelectedWeek ] = useState('');
 
-    const { setPicks, loading: submitLoading, error: submitError } = useUpdatePicks();
+    const { setPicks, loading: submitLoading, error: submitError } = useSetPicks();
 
     useEffect(() => {
         if (!loading) {

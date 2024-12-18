@@ -6,7 +6,7 @@ const Standings = () => {
 
   return (  
     <div>
-        { user }
+        Standings
     </div>
   )
 }

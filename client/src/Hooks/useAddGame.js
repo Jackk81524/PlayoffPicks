@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 
-export const useSetPicks = () => {
+export const useAddGame = () => {
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
     const [result, setResult] = useState(null);
 
-
-    const setPicks = async (url, Week, GameId, User, Pick) => {
+    const addGame = async (url, Week, gameTime, team1, team2) => {
         try {
             setLoading(true);
 
             const data = {
                 "Week" : Week,
-                "GameId" : GameId,
-                "User" : User,
-                "Pick" : Pick
+                "gameTime" : gameTime,
+                "team1" : team1,
+                "team2" : team2
             }
 
             await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -41,5 +40,5 @@ export const useSetPicks = () => {
         }
     };
 
-    return { setPicks, loading, error };
+    return { addGame, loading, error };
 };
