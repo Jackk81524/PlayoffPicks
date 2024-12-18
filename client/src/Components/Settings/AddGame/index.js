@@ -33,9 +33,13 @@ const AddGame = () => {
     };
 
     const handleSubmission = async () => {
-        const newDate = new Date(gameTime);
-        const gameTimeUtc = newDate.toISOString();
+        const gameTimeUtc = '';
+        if(gameTime != '') {
+            const newDate = new Date(gameTime);
+            gameTimeUtc = newDate.toISOString();
+        }
         await addGame(url + 'addGame', selectedWeek, gameTimeUtc, team1, team2);
+        
         setTeam1('');
         setTeam2('');
         setGameTime('');

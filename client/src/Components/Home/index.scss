@@ -28,6 +28,9 @@
     font-family: "Nunito", sans-serif;
     background-color: var(--main-dark);
     color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .submission:active {
