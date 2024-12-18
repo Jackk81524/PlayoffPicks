@@ -6,8 +6,8 @@ import AddWeek from './AddWeek';
 
 const Settings = () => {
     const [addGameView, setAddGameView] = useState(true);
-    const [addWeekView, setAddWeekView] = useState(null);
-    const [resultView, setResultView] = useState(null);
+    const [addWeekView, setAddWeekView] = useState(false);
+    const [resultView, setResultView] = useState(false);
     
     const handleAddGame = () => {
         setAddGameView(true);
@@ -30,9 +30,9 @@ const Settings = () => {
     return (
         <div className='settings-page'>
             <div className='settings-toggle'>
-                <button className='settings-box' onClick={handleAddGame}>Add Game</button>
-                <button className='settings-box' onClick={handleAddWeek}>Add Week</button>
-                <button className='settings-box' onClick={handleSetResult}>Set Result</button>
+                <button className={`settings-box ${addGameView ? 'active' :  ''}`} onClick={handleAddGame}>Add Game</button>
+                <button className={`settings-box ${addWeekView ? 'active' :  ''}`} onClick={handleAddWeek}>Add Week</button>
+                <button className={`settings-box ${resultView ? 'active' :  ''}`} onClick={handleSetResult}>Set Result</button>
             </div>
             {addGameView && 
                 <div>

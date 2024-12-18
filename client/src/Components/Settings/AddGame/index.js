@@ -1,5 +1,6 @@
 import { PicksContext } from '../../../Context/PicksContext';
 import { useAddGame } from '../../../Hooks/useAddGame';
+import LoadingSpinner from '../../Spinner';
 import './index.scss';
 
 import React, { useContext, useEffect, useState } from 'react'
@@ -70,8 +71,15 @@ const AddGame = () => {
                 className='settings-box'
             />
             <button className='submission'onClick={handleSubmission}>
-                Submit
+                {loading ? (
+                    <LoadingSpinner /> 
+                ) : (
+                    'Submit'
+                )}
             </button>
+            <div className='result-message'>
+                    {error && <p className="error">{error.message}</p>}
+            </div>
         </div>
     )
 }
