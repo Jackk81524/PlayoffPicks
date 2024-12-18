@@ -44,14 +44,14 @@ const Picker = ({ game }) => {
     <div className="picker">
       <button
         onClick={() => handleSelection(game.team1)}
-        className={`left ${getButtonClass(game.team1)}`}
+        className={`left ${getButtonClass(game.team1)} button`}
         disabled={isGameStarted}
       >
         {game.team1}
       </button>
       <button
         onClick={() => handleSelection(game.team2)}
-        className={`right ${getButtonClass(game.team2)}`}
+        className={`right ${getButtonClass(game.team2)} button`}
         disabled={isGameStarted}
       >
         {game.team2}

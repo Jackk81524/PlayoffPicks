@@ -3,20 +3,6 @@
     flex-direction: column;
     align-items: center;
 
-    .dropdown {
-        appearance: none;
-        width: 40vh;
-        height: 7vh;
-        border: 2px solid var(--highlight);
-        border-radius: 20px;
-        text-align-last: center;
-        background-color: white;
-        color: var(--main-dark);
-        font-family: "Nunito", sans-serif;
-        font-size: 2vh;
-        margin-bottom: 20px;
-    }
-
     option {
         background-color: white;
         color: black;
@@ -27,23 +13,37 @@
         background-color: white;
     }
 
-    .submission {
-        width: 24vh;
-        height: 4vh;
-        margin-top: 15px;
-        border-radius: 20px;
-        border: 2px solid var(--highlight);
-        font-family: "Nunito", sans-serif;
-        background-color: var(--main-dark);
-        color: white;
-    }
-
-    .submission:active {
-        background-color: var(--highlight);
-    }
-
     .result-message {
         text-align: center;
         color: white;
     }
+}
+
+.submission {
+    width: 24vh;
+    height: 4vh;
+    margin-top: 15px;
+    border-radius: 20px;
+    border: 2px solid var(--highlight);
+    font-family: "Nunito", sans-serif;
+    background-color: var(--main-dark);
+    color: white;
+}
+
+.submission:active {
+    background-color: var(--highlight);
+}
+
+.dropdown {
+    appearance: none;
+    width: 40vh;
+    height: 7vh;
+    border: 2px solid var(--highlight);
+    border-radius: 20px;
+    text-align-last: center;
+    background-color: white;
+    color: var(--main-dark);
+    font-family: "Nunito", sans-serif;
+    font-size: 2vh;
+    margin-bottom: 20px;
 }

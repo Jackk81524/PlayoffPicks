@@ -51,20 +51,22 @@ const AddGame = () => {
                 value={team1}
                 onChange={handleTeam1Change}
                 placeholder='Team 1'
+                className='settings-box'
             />
             <input 
                 type="text"
                 value={team2}
                 onChange={handleTeam2Change}
                 placeholder='Team 2'
+                className='settings-box'
             />
             <input 
                 type="datetime-local" 
                 value={gameTime} 
                 onChange={handleDateChange}
-
+                className='settings-box'
             />
-            <button onClick={handleSubmission}>
+            <button className='submission'onClick={handleSubmission}>
                 Submit
             </button>
         </div>

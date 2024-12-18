@@ -30,9 +30,9 @@ const Settings = () => {
     return (
         <div className='settings-page'>
             <div className='settings-toggle'>
-                <button onClick={handleAddGame}>Add Game</button>
-                <button onClick={handleAddWeek}>Add Week</button>
-                <button onClick={handleSetResult}>Set Result</button>
+                <button className='settings-box' onClick={handleAddGame}>Add Game</button>
+                <button className='settings-box' onClick={handleAddWeek}>Add Week</button>
+                <button className='settings-box' onClick={handleSetResult}>Set Result</button>
             </div>
             {addGameView && 
                 <div>
