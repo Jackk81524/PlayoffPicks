@@ -12,16 +12,16 @@ const Navbar = () => {
     return (
         <div className="nav-bar">
             <div className="left-nav">
-                <nav>
-                    <NavLink exact="true" activeClassName="active" to="/" className="side-text">
-                        <FontAwesomeIcon icon = {faHome} color='white' />
-                    </NavLink>
-                </nav>
                 {user == "Jack" && <nav>
                     <NavLink exact="true" activeClassName="active" to="/settings" className="side-text add">
                         <FontAwesomeIcon icon = {faAdd} color='white' />
                     </NavLink>
                 </nav>}
+                <nav>
+                    <NavLink exact="true" activeClassName="active" to="/" className="side-text">
+                        <FontAwesomeIcon icon = {faHome} color='white' />
+                    </NavLink>
+                </nav>
             </div>
             <h1>
                 Playoff Picks
