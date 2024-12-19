@@ -1,6 +1,5 @@
 .standings{
-    margin: auto;
-    width: 50vh;
+    width: 45vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -9,7 +8,7 @@
 
     h1 {
         font-family: "Nunito", sans-serif;
-        font-size: 4vh;
+        font-size: 3.5vh;
         color: white;
         margin: 0px;
     }
@@ -20,7 +19,6 @@
         color: white;
         font-size: 2.5vh;
         font-family: "Nunito", sans-serif;
-        margin: 2vh;
     }
 
     .row {
@@ -37,7 +35,7 @@
     }
 
     .row > div {
-        padding: 2vh 2vh;
+        padding: 1.8vh 1.5vh;
         text-align: center; 
         border-bottom: 3px solid var(--highlight); 
     }
