@@ -68,9 +68,7 @@ app.post("/api/addGame", async (req, res) => {
 app.get("/api/getStandings", async (req, res) => {
     try {
         const out = await fetchStandingsData();
-        res.json({
-            Standings : out
-        });
+        res.json(out);
     } catch (error) {
         console.log(error);
         return error.Error

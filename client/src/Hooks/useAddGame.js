@@ -16,8 +16,6 @@ export const useAddGame = () => {
                 "team2" : team2
             }
 
-            await new Promise((resolve) => setTimeout(resolve, 1000));
-
             const response = await fetch(url, {
                 method: 'POST',
                 headers: {

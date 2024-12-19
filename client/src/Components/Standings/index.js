@@ -1,13 +1,15 @@
 import React, { useContext, useState } from 'react'
-import { UserContext } from '../../Context/UserContext'
 import './index.scss';
+import { useFetchStandings } from '../../Hooks/useFetchStandings';
+import { PicksContext } from '../../Context/PicksContext';
+import LoadingSpinner from '../Spinner';
 
 const Standings = () => {
-  const { user } = useContext(UserContext);
-  const [usersList, setUsersList] = useState(["Jack", "Kyle", "Matt", "Logan", "Nick", "Mogo", "Rich"]);
-  const [winsList, setWinsList] = useState(["0", "0", "0", "0","0", "0", "0"]);
-  const [lossList, setLossList] = useState(["0", "0", "0", "0","0", "0", "0"]);
-  const [percentage, setPercentage] = useState(["0%", "0%", "0%", "0%", "0%", "0%", "0%"]);
+  const { url } = useContext(PicksContext);
+  const { usersList, winsList, lossList, percentList, loading, error } = useFetchStandings(url + 'getStandings');
+
+  if(loading) return <p><LoadingSpinner /></p>
+  if(error) return <p>Error: {error}</p>
 
   return (  
     <div className="standings">
@@ -19,12 +21,12 @@ const Standings = () => {
           <div>Losses</div>
           <div>Percentage</div>
         </div>
-        {usersList.map((u, index) => (
+        {usersList && winsList && lossList && percentList && usersList.map((u, index) => (
           <div className="row" key={index}>
             <div>{u}</div>
             <div>{winsList[index]}</div>
             <div>{lossList[index]}</div>
-            <div>{percentage[index]}</div>
+            <div>{percentList[index]}%</div>
           </div>
         ))}
       </div>
