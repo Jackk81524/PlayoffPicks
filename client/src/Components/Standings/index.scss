@@ -1,0 +1,45 @@
+.standings{
+    margin: auto;
+    width: 50vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0px;
+
+    h1 {
+        font-family: "Nunito", sans-serif;
+        font-size: 4vh;
+        color: white;
+        margin: 0px;
+    }
+
+    .standings-table {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        color: white;
+        font-size: 2.5vh;
+        font-family: "Nunito", sans-serif;
+        margin: 2vh;
+    }
+
+    .row {
+        display: contents; 
+    }
+
+    .row:last-child > div {
+        border-bottom: none;
+    }
+
+    .title {
+        font-weight: bold;
+        font-size: 2.7vh;
+    }
+
+    .row > div {
+        padding: 2vh 2vh;
+        text-align: center; 
+        border-bottom: 3px solid var(--highlight); 
+    }
+}
+  

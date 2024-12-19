@@ -72,6 +72,51 @@ const fetchPicksData = async () => {
     }
 };
 
+const fetchStandingsData = async () => {
+    try {
+        const collectionRef = collection(firestoreDb, "Users");
+        const usersSnapshot = await getDocs(collectionRef);
+        
+        const users = [];
+        const wins = [];
+        const losses = [];
+        const percentages = [];
+
+        usersSnapshot.docs.forEach((doc) => {
+            const userData = doc.data();
+            const userName = doc.id;
+            const userWins = userData.Wins || 0;
+            const userLosses = userData.Losses || 0;
+
+            const winPercentage = userLosses + userWins === 0 ? 0 : (userWins / (userWins + userLosses)) * 100;
+
+            users.push(userName);
+            wins.push(userWins);
+            losses.push(userLosses);
+            percentages.push(winPercentage);
+        });
+
+        const sortedIndexes = percentages
+            .map((percentage, index) => ({ percentage, index }))
+            .sort((a, b) => b.percentage - a.percentage)
+
+        const sortedUsers = sortedIndexes.map(item => users[item.index]);
+        const sortedWins = sortedIndexes.map(item => wins[item.index]);
+        const sortedLosses = sortedIndexes.map(item => losses[item.index]);
+        const sortedPercentages = sortedIndexes.map(item => percentages[item.index]);
+
+        return {
+            users: sortedUsers,
+            wins: sortedWins,
+            losses: sortedLosses,
+            percentages: sortedPercentages
+        };
+    } catch (error) {
+        console.log("Error: ", error);
+        throw error;
+    }
+}
+
 const uploadProcessData = async () => {
     const dataToUpload = {
         key1: "test",
@@ -152,5 +197,6 @@ module.exports = {
     uploadProcessData, 
     fetchPicksData,
     uploadPicksData,
-    addGame
+    addGame,
+    fetchStandingsData
 }

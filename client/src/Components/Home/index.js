@@ -58,7 +58,7 @@ const Home = () => {
                     {submitLoading ? (
                         <LoadingSpinner /> 
                     ) : (
-                        'Submit'
+                        `Submit for ${user}`
                     )}
                 </button>
                 <div className='result-message'>
