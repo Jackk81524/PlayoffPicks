@@ -46,7 +46,7 @@ const AddGame = () => {
     }
 
     return (
-        <div className='add-week-page'>
+        <div className='settings-child'>
             <select className="dropdown" value={selectedWeek} onChange={(e) => setSelectedWeek(e.target.value)}>
                 {weeksList && weeksList.map((week, index) => (
                     <option className='option' key={index} value={week}>

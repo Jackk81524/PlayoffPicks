@@ -47,13 +47,13 @@ const Home = () => {
                         <Picker 
                             key={index} 
                             game={game}
+                            settings={false}
                         />
                         );
                     })
                 }
             </div>
             <div>
-                
                 <button className='submission' onClick={handleSubmission} disabled={submitLoading}>
                     {submitLoading ? (
                         <LoadingSpinner /> 

@@ -74,15 +74,14 @@ const fetchPicksData = async () => {
 
 const fetchStandingsData = async () => {
     try {
-        const collectionRef = collection(firestoreDb, "Users");
-        const usersSnapshot = await getDocs(collectionRef);
+        const usersDocs = await fetchUsersDocs();
         
         const users = [];
         const wins = [];
         const losses = [];
         const percentages = [];
 
-        usersSnapshot.docs.forEach((doc) => {
+        usersDocs.forEach((doc) => {
             const userData = doc.data();
             const userName = doc.id;
             const userWins = userData.Wins || 0;
@@ -112,6 +111,18 @@ const fetchStandingsData = async () => {
             percentages: sortedPercentages
         };
     } catch (error) {
+        console.log("Error: ", error);
+        throw error;
+    }
+}
+
+fetchUsersDocs = async () => {
+    try {
+        const collectionRef = collection(firestoreDb, "Users");
+        const usersSnapshot = await getDocs(collectionRef);
+
+        return usersSnapshot.docs;
+    } catch {
         console.log("Error: ", error);
         throw error;
     }
@@ -188,6 +199,41 @@ const uploadPicksData = async (data) => {
     }
 }
 
+const addResult = async (data) => {
+    try {
+        const weekDoc = doc(firestoreDb, "Picks", data.Week);
+        const gameDoc = doc(weekDoc, "Games", data.GameId.toString());
+
+        const usersDocs = await fetchUsersDocs();
+
+        await updateDoc(gameDoc, {
+            "result" : data.Result
+        });
+
+        usersDocs.forEach(async (userDoc) => {
+            userData = userDoc.data();
+
+            const picksDoc = doc(gameDoc, "picks", userDoc.id);
+            const picksSnapshot = await getDoc(picksDoc);
+            picksData = picksSnapshot.data();
+
+            if(data.Result == picksData.Pick) {
+                await updateDoc(userDoc.ref, {
+                    "Wins" : userData.Wins + 1
+                }); 
+            } else {
+                await updateDoc(userDoc.ref, {
+                    "Losses" : userData.Losses + 1
+                }); 
+            }
+
+            return "success";
+        });
+    } catch(error) {
+        console.log("Error updating", error);
+        throw error;
+    }
+}
 
 const getFirebaseApp = () => app;
 
@@ -198,5 +244,6 @@ module.exports = {
     fetchPicksData,
     uploadPicksData,
     addGame,
-    fetchStandingsData
+    fetchStandingsData,
+    addResult
 }

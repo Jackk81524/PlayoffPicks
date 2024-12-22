@@ -32,3 +32,12 @@
         color: #e0e0e0;
     }
 }
+
+.settings-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2vh;
+    flex-direction: column;
+    gap: 1vh;
+}
