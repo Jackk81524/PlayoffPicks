@@ -47,22 +47,23 @@ const fetchPicksData = async () => {
             const gameSnapshot = await getDocs(gamesCollection);
             
             const gamesData = { "Games" : { } };
+            
+            if(!gameSnapshot.empty){
+                for(const game of gameSnapshot.docs) {
+                    const picksCollection = collection(game.ref, "picks");
+                    const picksSnapshot = await getDocs(picksCollection);
 
-            for(const game of gameSnapshot.docs) {
-                const picksCollection = collection(game.ref, "picks");
-                const picksSnapshot = await getDocs(picksCollection);
+                    const picks = { };
 
-                const picks = { };
+                    for(const pick of picksSnapshot.docs) {
+                        picks[pick.id] = pick.data().Pick;
+                    }
 
-                for(const pick of picksSnapshot.docs) {
-                    picks[pick.id] = pick.data().Pick;
+                    gamesData.Games[game.id] = { ...game.data(), picks };
                 }
-
-                gamesData.Games[game.id] = { ...game.data(), picks };
-                gamesData["startTime"] = week.data().startTime;
-
             }
             
+            gamesData["startTime"] = week.data().startTime;
             data[week.id] = gamesData;
         }
         return data;
@@ -182,6 +183,21 @@ const addGame = async (data) => {
     }
 }
 
+    const addWeek = async (data) => {
+        try {
+            const newWeekDoc = doc(firestoreDb, "Picks", data.Week);
+            
+            dataToUpload = {
+                startTime : data.startTime,
+                nextId: 0
+            }
+
+            await setDoc(newWeekDoc, dataToUpload);
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 const uploadPicksData = async (data) => {
     try {
         const weekDoc = doc(firestoreDb, "Picks", data.Week);
@@ -245,5 +261,6 @@ module.exports = {
     uploadPicksData,
     addGame,
     fetchStandingsData,
-    addResult
+    addResult,
+    addWeek
 }

@@ -26,7 +26,7 @@ const SetResult = () => {
       && weeksData[selectedWeek] 
       && weeksData[selectedWeek].Games) {
       setSelectedGame(Object.keys(weeksData[selectedWeek].Games)[0]);
-      setGamesDict(weeksData[weeksList[0]].Games)
+      setGamesDict(weeksData[selectedWeek].Games);
     }
   }, [selectedWeek])
 
@@ -38,7 +38,22 @@ const SetResult = () => {
   }, [selectedGame])
 
   const handleSubmission = async () => {
+    console.log("here");
     await setGameResult(url + 'addResult', selectedWeek, selectedGame, selectedWinner);
+  }
+
+  const isSubmitDisabled = () => {
+    if(selectedWeek != '' && selectedGame != '' && selectedGame in weeksData[selectedWeek].Games){
+      if(selectedWinner == ''){
+        return true;
+      } else if(weeksData[selectedWeek].Games[selectedGame].result != null) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return true;
+    }
   }
 
   if(loading) return <p><LoadingSpinner /></p>
@@ -70,7 +85,7 @@ const SetResult = () => {
           </option>
         </select>
       }
-      <button className='submission' onClick={handleSubmission} disabled={false}>
+      <button className='submission' onClick={handleSubmission} disabled={isSubmitDisabled()}>
           {submitLoading ? (
               <LoadingSpinner /> 
           ) : (

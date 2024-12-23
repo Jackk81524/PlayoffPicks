@@ -1,4 +1,4 @@
-const { uploadProcessData, uploadPicksData, fetchPicksData, addGame, fetchStandingsData, initializeFirebaseApp, addResult } = require('./firebase');
+const { uploadProcessData, uploadPicksData, fetchPicksData, addGame, fetchStandingsData, initializeFirebaseApp, addResult, addWeek } = require('./firebase');
 const express = require('express')
 const cors = require('cors');
 
@@ -80,6 +80,20 @@ app.post("/api/addResult", async (req, res) => {
         const requestData = req.body;
 
         const out = await addResult(requestData);
+        res.json({
+            result : out
+        });
+    } catch (error) {
+        console.log(error);
+        return error.Error;
+    }
+});
+
+app.post("/api/addWeek", async (req, res) => {
+    try {
+        const requestData = req.body;
+
+        const out = await addWeek(requestData);
         res.json({
             result : out
         });

@@ -32,12 +32,17 @@ const AddGame = () => {
         setTeam2(e.target.value);
     };
 
-    const handleSubmission = async () => {
-        const gameTimeUtc = '';
-        if(gameTime != '') {
-            const newDate = new Date(gameTime);
-            gameTimeUtc = newDate.toISOString();
+    const isSubmitDisabled = () => {
+        if(team1 != '' && team2 != '' && gameTime != ''){
+            return false;
+        } else {
+            return true;
         }
+    }
+
+    const handleSubmission = async () => {
+        const newDate = new Date(gameTime);
+        const gameTimeUtc = newDate.toISOString();
         await addGame(url + 'addGame', selectedWeek, gameTimeUtc, team1, team2);
         
         setTeam1('');
@@ -74,7 +79,7 @@ const AddGame = () => {
                 onChange={handleDateChange}
                 className='settings-box'
             />
-            <button className='submission'onClick={handleSubmission}>
+            <button className='submission'onClick={handleSubmission} disabled={isSubmitDisabled()}>
                 {loading ? (
                     <LoadingSpinner /> 
                 ) : (

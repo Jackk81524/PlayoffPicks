@@ -32,11 +32,18 @@
     align-items: center;
     justify-content: center;
     font-size: 2vh;
+
+    &:disabled {
+        border: none;
+        opacity: 0.4;
+    }
 }
 
 .submission:active {
     background-color: var(--highlight);
 }
+
+
 
 .dropdown {
     appearance: none;
