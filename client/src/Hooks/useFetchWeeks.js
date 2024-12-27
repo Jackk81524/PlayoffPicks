@@ -21,9 +21,6 @@ export const useFetchWeeks = (url) => {
                 const result = await response.json();
 
                 if (isMounted) {
-
-                    console.log(result);
-
                     const sortedWeeks = Object.entries(result.Weeks)
                         .sort((a, b) => new Date(b[1].startTime) - new Date(a[1].startTime)) // Descending order
                         .map(week => week[0]);

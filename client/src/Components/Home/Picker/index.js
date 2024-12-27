@@ -15,12 +15,11 @@ const Picker = ({ game }) => {
 
   useEffect(() => {
     if (game) {
+      setSelected(game.picks[user]);
       const currentDate = new Date();
       const lockDate = new Date(game.gameTime);
 
-      if (currentDate > lockDate || result != null) {
-        setIsGameStarted(true);
-      }
+      setIsGameStarted(currentDate > lockDate || game.result != null);
 
       if (game.result !== null) {
         setResult(game.result === game.picks[user] ? 'correct' : 'incorrect');
@@ -31,7 +30,6 @@ const Picker = ({ game }) => {
   }, [game, result]);
 
   const getButtonClass = (team) => {
-    
     if (selected === team) {
       if (result === 'correct') return 'selected correct';
       if (result === 'incorrect') return 'selected incorrect';
