@@ -26,7 +26,7 @@ const Standings = () => {
             <div>{u}</div>
             <div>{winsList[index]}</div>
             <div>{lossList[index]}</div>
-            <div>{percentList[index]}%</div>
+            <div>{Math.round(percentList[index])}%</div>
           </div>
         ))}
       </div>

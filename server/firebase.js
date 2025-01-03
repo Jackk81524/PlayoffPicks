@@ -225,14 +225,13 @@ const addResult = async (data) => {
         await updateDoc(gameDoc, {
             "result" : data.Result
         });
-
-        usersDocs.forEach(async (userDoc) => {
-            userData = userDoc.data();
+        
+        for (const userDoc of usersDocs) {
+            const userData = userDoc.data();
 
             const picksDoc = doc(gameDoc, "picks", userDoc.id);
             const picksSnapshot = await getDoc(picksDoc);
-            picksData = picksSnapshot.data();
-
+            const picksData = picksSnapshot.data();
             if(data.Result == picksData.Pick) {
                 await updateDoc(userDoc.ref, {
                     "Wins" : userData.Wins + 1
@@ -241,10 +240,10 @@ const addResult = async (data) => {
                 await updateDoc(userDoc.ref, {
                     "Losses" : userData.Losses + 1
                 }); 
-            }
 
-            return "success";
-        });
+            }
+        };
+
     } catch(error) {
         console.log("Error updating", error);
         throw error;
