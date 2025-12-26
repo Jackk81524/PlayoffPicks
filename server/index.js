@@ -1,4 +1,4 @@
-const { uploadProcessData, uploadPicksData, fetchPicksData, addGame, fetchStandingsData, initializeFirebaseApp, addResult, addWeek } = require('./firebase');
+const { uploadProcessData, uploadPicksData, fetchPicksData, addGame, fetchStandingsData, initializeFirebaseApp, addResult, addWeek, resetScores } = require('./firebase');
 const express = require('express')
 const cors = require('cors');
 
@@ -34,6 +34,20 @@ app.get("/api/allData", async (req, res) => {
     } catch (error) {
         console.log(error);
         return error.Error;
+    }
+});
+
+app.post('/api/resetScores', async (req, res) => {
+    try {
+        const user = req.body && req.body.user;
+        if (user !== 'Jack') {
+            return res.status(403).json({ error: 'Forbidden' });
+        }
+        await resetScores();
+        return res.json({ status: 'success' });
+    } catch (error) {
+        console.error('resetScores error', error);
+        return res.status(500).json({ error: 'reset failed' });
     }
 });
 

@@ -1,5 +1,5 @@
 const { initializeApp } = require("firebase/app");
-const { getFirestore, doc, setDoc, getDocs, collection, updateDoc, getDoc } = require("firebase/firestore")
+const { getFirestore, doc, setDoc, getDocs, collection, updateDoc, getDoc, deleteDoc } = require("firebase/firestore")
 require('dotenv').config();
 
 const {
@@ -24,6 +24,36 @@ const firebaseConfig = {
 
 let firestoreDb;
 let app;
+
+const resetScores = async () => {
+    try {
+        const picksCollection = collection(firestoreDb, 'Picks');
+        const weeksSnapshot = await getDocs(picksCollection);
+
+        for (const weekDoc of weeksSnapshot.docs) {
+            const gamesSnapshot = await getDocs(collection(weekDoc.ref, 'Games'));
+            for (const gameDoc of gamesSnapshot.docs) {
+                const picksSnapshot = await getDocs(collection(gameDoc.ref, 'picks'));
+                for (const pickDoc of picksSnapshot.docs) {
+                    await deleteDoc(pickDoc.ref);
+                }
+                await deleteDoc(gameDoc.ref);
+            }
+            await deleteDoc(weekDoc.ref);
+        }
+
+        // Reset Wins and Losses for all users
+        const usersSnapshot = await getDocs(collection(firestoreDb, 'Users'));
+        for (const userDoc of usersSnapshot.docs) {
+            await updateDoc(userDoc.ref, { Wins: 0, Losses: 0 });
+        }
+
+        return 'success';
+    } catch (error) {
+        console.log('Error resetScores:', error);
+        throw error;
+    }
+};
 
 const initializeFirebaseApp = () => {
     try {
@@ -255,11 +285,12 @@ const getFirebaseApp = () => app;
 module.exports = {
     initializeFirebaseApp,
     getFirebaseApp,
-    uploadProcessData, 
+    uploadProcessData,
     fetchPicksData,
     uploadPicksData,
     addGame,
     fetchStandingsData,
     addResult,
-    addWeek
-}
+    addWeek,
+    resetScores
+};

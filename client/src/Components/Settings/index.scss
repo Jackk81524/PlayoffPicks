@@ -41,3 +41,36 @@
     flex-direction: column;
     gap: 1vh;
 }
+
+.settings-reset {
+    display: flex;
+    justify-content: center;
+    margin-top: 1vh;
+}
+
+.reset-button {
+    /* Discreet reset button for admin use */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6vh 1.2vh;
+    height: auto;
+    border-radius: 12px;
+    margin: 6px 0;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 1.6vh;
+    cursor: pointer;
+    transition: background-color 150ms ease, opacity 150ms ease;
+    opacity: 0.85;
+
+    &:hover {
+        background: rgba(255,255,255,0.04);
+        opacity: 1;
+    }
+
+    &:active {
+        transform: translateY(1px);
+    }
+}
