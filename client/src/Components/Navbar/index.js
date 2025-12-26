@@ -26,7 +26,7 @@ const Navbar = () => {
             </div>
 
             <h1>
-                Playoff Picks
+                Big 7
             </h1>
 
             <div className="right-nav">

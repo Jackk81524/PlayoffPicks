@@ -15,10 +15,10 @@ const AddGame = () => {
     const [gameTime, setGameTime] = useState('');
 
     useEffect(() => {
-        if (!loading) {
+        if (!loading && weeksList && weeksList.length > 0) {
             setSelectedWeek(weeksList[0]);
         }
-    }, [weeksList]);
+    }, [weeksList, loading]);
 
     const handleDateChange = (e) => {
         setGameTime(e.target.value); // Update the state with the selected date

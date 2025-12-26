@@ -1,7 +1,13 @@
 .spinner {
     font-size: 2rem;
+    font-weight: bold;
     color: var(--highlight);
     animation: spin 1s linear infinite;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 3rem;
 }
 
 @keyframes spin {

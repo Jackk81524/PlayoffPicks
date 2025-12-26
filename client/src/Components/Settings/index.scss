@@ -22,15 +22,26 @@
     border: 2px solid var(--highlight);
     text-align: center;
     background-color: var(--main-medium);
-    color: white;
-    font-family: "Nunito", sans-serif;
+    color: var(--main-light);
+    font-family: "Inter", sans-serif;
     font-size: 2vh;
+    font-weight: 500;
     margin: 15px 0px;
     border-radius: 20px;
+    transition: all 0.2s ease;
     
     &::placeholder {
-        color: #e0e0e0;
+        color: rgba(247, 249, 249, 0.5);
     }
+
+    &:hover {
+        border-color: #fff;
+    }
+}
+
+/* Specific override for date inputs to be wider */
+input[type="datetime-local"].settings-box {
+    width: 30vh; /* Increased from default 20vh */
 }
 
 .settings-child {

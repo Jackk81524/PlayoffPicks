@@ -1,6 +1,5 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
 
 .nav-bar {
     background: var(--main-dark);
@@ -12,25 +11,30 @@
     align-items: center;
     justify-content: center;
     gap: 10%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border for separation */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Deeper shadow */
+    z-index: 1000;
 
     h1 {
         color: var(--highlight);
         font-size: 4vh;
-        font-family: "Jaro", sans-serif;
-        font-optical-sizing: auto; 
-        font-weight: 400;
-        font-style: normal;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.5);
     }
 
     nav {
-        color: white;
+        color: var(--main-light);
         font-size: 3vh;;
-        font-family: "Nunito", sans-serif;
+        font-family: "Inter", sans-serif;
         text-decoration: none;
 
         a.active {
             svg{
                 color: var(--highlight);
+                filter: drop-shadow(0 0 5px rgba(242, 201, 76, 0.5)); /* Glow effect on active */
             }
         }
         

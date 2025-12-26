@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 export const useFetchWeeks = (url) => {
-    const [weeksList, setWeeksList] = useState(null);
-    const [weeksData, setWeeksData] = useState(null);
+    const [weeksList, setWeeksList] = useState([]);
+    const [weeksData, setWeeksData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 

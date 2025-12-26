@@ -30,6 +30,8 @@ export const useSetPicks = () => {
             }
             const res = await response.json();
 
+            await new Promise(resolve => setTimeout(resolve, 500));
+
             setResult(res.result);
 
         } catch (err) {
