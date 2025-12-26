@@ -13,10 +13,6 @@
         transition: all 0.2s ease;
         cursor: pointer;
 
-        &:hover:not(:disabled) {
-            background-color: rgba(242, 201, 76, 0.1); /* Subtle gold tint */
-        }
-
         &:disabled{
             border-color: #444;
             color: #888;

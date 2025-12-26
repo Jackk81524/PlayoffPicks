@@ -59,6 +59,12 @@
         line-height: 1; /* avoid baseline offsets */
     }
 
+    /* Add spacing between icons */
+    .left-nav nav:not(:last-child),
+    .right-nav nav:not(:last-child) {
+        margin-right: 2vh;
+    }
+
     /* size SVG icons consistently */
     .side-text svg {
         width: 3vh;
