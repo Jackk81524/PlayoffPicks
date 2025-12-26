@@ -8,7 +8,9 @@ initializeFirebaseApp();
 
 const allowedOrigins = [
     'http://localhost:3000', 
-    'https://playoff-picks-client.vercel.app' 
+    'https://playoff-picks-client.vercel.app',
+    'https://playoff-picks.vercel.app',
+    'https://playoff-picks-97jl.vercel.app'
 ];
 
 const corsOptions = {
