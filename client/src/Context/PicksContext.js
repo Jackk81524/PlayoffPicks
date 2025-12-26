@@ -5,7 +5,7 @@ export const PicksContext = createContext();
 
 export const PicksProvider = ({ children }) => {
   // const url = 'http://localhost:5001/api/';
-  const url = 'playoff-picks-97jl.vercel.app/api/';
+  const url = 'https://playoff-picks-97jl.vercel.app/api/';
   const {weeksList, weeksData, loading, error} = useFetchWeeks(url + 'allData');
   
   return (
