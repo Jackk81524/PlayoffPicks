@@ -15,10 +15,10 @@ const Home = () => {
     const { setPicks, loading: submitLoading, error: submitError } = useSetPicks();
 
     useEffect(() => {
-        if (!loading) {
+        if (!loading && weeksList && weeksList.length > 0) {
             setSelectedWeek(weeksList[0]);
         }
-    }, [weeksList]);
+    }, [weeksList, loading]);
 
     
     const handleSubmission = async () => {

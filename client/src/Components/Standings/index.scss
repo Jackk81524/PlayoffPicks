@@ -7,18 +7,24 @@
     margin: 0px;
 
     h1 {
-        font-family: "Nunito", sans-serif;
+        font-family: "Montserrat", sans-serif;
         font-size: 3.5vh;
-        color: white;
+        color: var(--highlight);
         margin: 0px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
     }
 
     .standings-table {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        color: white;
+        color: var(--main-light);
         font-size: 2.5vh;
-        font-family: "Nunito", sans-serif;
+        font-family: "Inter", sans-serif;
+        background: var(--main-medium);
+        border-radius: 15px;
+        padding: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
 
     .row {
@@ -30,14 +36,16 @@
     }
 
     .title {
-        font-weight: bold;
+        font-weight: 700;
         font-size: 2.7vh;
+        color: var(--highlight);
+        border-bottom: 2px solid rgba(242, 201, 76, 0.3) !important;
     }
 
     .row > div {
         padding: 1.8vh 1vh;
         text-align: center; 
-        border-bottom: 3px solid var(--highlight); 
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
     }
 }
   

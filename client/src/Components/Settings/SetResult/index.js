@@ -16,10 +16,10 @@ const SetResult = () => {
   const [ gamesDict, setGamesDict] = useState([]);
 
   useEffect(() => {
-    if (!loading) {
+    if (!loading && weeksList && weeksList.length > 0) {
         setSelectedWeek(weeksList[0]);
     }
-  }, [weeksList]);
+  }, [weeksList, loading]);
 
   useEffect(() => {
     if(selectedWeek !== '' 
